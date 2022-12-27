@@ -122,5 +122,27 @@ int main() {
     int x, y;
     string  str, rst;
     tree t;
+    while (cin >> str) {
+        if (str == "insert") {
+            cin >> x;
+            Node* p = new Node(x);
+            t.push(p, t.root);
+        } else if (str == "exists") {
+            cin >> x;
+            if (t.exist(t.root, x) == nullptr) cout << "false" << '\n';
+            else cout << "true" << '\n';
+        } else if (str == "next") {
+            cin >> x;
+            if (t.next(x) != nullptr) cout << t.next(x)->data << '\n';
+            else cout << "none" << '\n';
+        } else if (str == "prev") {
+            cin >> x;
+            if (t.prev(x) != nullptr) cout << t.prev(x)->data << '\n';
+            else cout << "none" << '\n';
+        } else if (str == "delete") {
+            cin >> x;
+            t.del(t.exist(t.root, x), x);
+        }
+    }
     return 0;
 }
